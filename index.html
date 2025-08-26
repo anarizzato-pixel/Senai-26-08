@@ -1,53 +1,109 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Segurança para Sucos</title>
+    <style>
+        /* Estilos CSS embutidos */
+        :root {
+            --cor-fundo: #000000;
+            --cor-principal: #0f7e66;
+            --cor-secundaria: #37c0c5;
+            --cor-destaque: #ffffff;
+            --cor-texto: #D7F9FF;
+        }
 
-header {
-    background: #4CAF50;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-}
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
 
-nav {
-    background: #333;
-    color: white;
-    padding: 10px 0;
-}
+        .caixa-principal {
+            background-color: var(--cor-principal);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
+        h1 {
+            color: var(--cor-destaque);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
+        .caixa-sucos {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
+        button {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto);
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
 
-main {
-    padding: 20px;
-}
+        button:hover {
+            background-color: var(--cor-destaque);
+            color: var(--cor-principal);
+            transform: translateY(-3px);
+        }
 
-section {
-    margin-bottom: 20px;
-}
+        .mensagem {
+            margin-top: 20px;
+            font-size: 1.1em;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="caixa-principal">
+        <h1>Selecione o Suco</h1>
+        <div class="caixa-sucos">
+            <button onclick="adicionarSuco('Laranja')">Suco de Laranja</button>
+            <button onclick="adicionarSuco('Maçã')">Suco de Maçã</button>
+            <button onclick="adicionarSuco('Uva')">Suco de Uva</button>
+            <button onclick="adicionarSuco('Abacaxi')">Suco de Abacaxi</button>
+        </div>
+        <div class="mensagem" id="mensagem"></div>
+    </div>
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+    <script>
+        let sucoAtual = null;
 
+        function adicionarSuco(suco) {
+            const mensagem = document.getElementById("mensagem");
+
+            if (sucoAtual === null) {
+                sucoAtual = suco;
+                mensagem.textContent = `Você selecionou o ${suco}. Agora você pode adicionar outro suco.`;
+            } else {
+                mensagem.textContent = `Mistura não permitida! Você já selecionou o ${sucoAtual}.`;
+            }
+        }
+    </script>
+</body>
+</html>
